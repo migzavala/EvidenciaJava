@@ -1,86 +1,85 @@
+Función separador():
+    Imprimir línea separadora
+Fin de la función
+
 Función principal():
-    Declarar y crear objeto leer de tipo Scanner
-    Constante maxDoctores = 5
-    Constante maxPacientes = 20
-    Declarar arreglo de objetos ListaDoctores de tamaño maxDoctores
-    Declarar arreglo de objetos ListaPacientes de tamaño maxPacientes
-    Declarar contadorDoctores y contadorPacientes e inicializarlos en 0
-    Declarar acceso y asignarle el valor falso
+    Declarar variables:
+        maxDoctores = Valor máximo para el arreglo de doctores
+        maxPacientes = Valor máximo para el arreglo de pacientes
+        maxCitas = Valor máximo para el arreglo de citas
+        contadorDoctores = 0
+        contadorPacientes = 0
+        contadorCitas = 0
 
-    separador()
-    Imprimir "Programa de gestión de hospital."
-    separador()
+    Mientras opción != 7:
+        Imprimir menú
+        Leer opción
 
-    Mientras acceso sea falso:
-        Imprimir "Escriba el usuario:"
-        Leer usuarioTemporal
-        Imprimir "Escriba la contraseña:"
-        Leer passwordTemporal
-
-        Si usuarioTemporal es igual a "admin" y passwordTemporal es igual a "root" entonces:
-            Imprimir "¡Bienvenido!"
-            Asignar verdadero a acceso
-        Sino:
-            Imprimir "Usuario y contraseña incorrectos."
-
-    Mientras verdadero:
-        separador()
-        Imprimir "Presione 1 para agregar un doctor, 2 para agregar un paciente, 3 para imprimir los doctores, 4 para imprimir los pacientes o 5 para salir."
-        Leer menuOpcion
-        separador()
-
-        Según menuOpcion hacer:
+        Según opción:
             Caso 1:
-                Si contadorDoctores es igual a maxDoctores entonces:
-                    Imprimir "Ya no se pueden crear más doctores."
+                Si contadorDoctores == maxDoctores:
+                    Imprimir "Ya no se pueden agregar más doctores."
                 Sino:
                     Imprimir "Introduzca el nombre del doctor:"
                     Leer nombreDoctor
                     Imprimir "Introduzca la especialidad del doctor:"
                     Leer especialidadDoctor
-                    Imprimir "Introduzca el id del doctor:"
+                    Imprimir "Introduzca el ID del doctor:"
                     Leer idDoctor
-                    Crear objeto Doctor y asignarlo a ListaDoctores en la posición contadorDoctores
-                    separador()
+                    Crear un nuevo objeto Doctor con los datos ingresados
+                    Agregar el objeto Doctor al arreglo ListaDoctores en la posición contadorDoctores
+                    Incrementar contadorDoctores
                     Imprimir "El doctor " + nombreDoctor + " ha sido registrado correctamente."
-                    separador()
-                    Incrementar contadorDoctores en 1
-                Fin si
-                Romper caso
+
             Caso 2:
-                Si contadorPacientes es igual a maxPacientes entonces:
-                    Imprimir "Ya no se pueden crear más pacientes."
+                Si contadorPacientes == maxPacientes:
+                    Imprimir "Ya no se pueden agregar más pacientes."
                 Sino:
                     Imprimir "Introduzca el nombre del paciente:"
                     Leer nombrePaciente
-                    Imprimir "Introduzca el id del paciente:"
+                    Imprimir "Introduzca el ID del paciente:"
                     Leer idPaciente
-                    Crear objeto Paciente y asignarlo a ListaPacientes en la posición contadorPacientes
-                    separador()
-                    Imprimir "El paciente " + nombrePaciente + " ha                sido registrado correctamente."
-                    separador()
-                    Incrementar contadorPacientes en 1
-                Fin si
-                Romper caso
+                    Crear un nuevo objeto Paciente con los datos ingresados
+                    Agregar el objeto Paciente al arreglo ListaPacientes en la posición contadorPacientes
+                    Incrementar contadorPacientes
+                    Imprimir "El paciente " + nombrePaciente + " ha sido registrado correctamente."
+
             Caso 3:
-                Imprimir "Lista de todos los doctores:"
-                Para cada i desde 0 hasta contadorDoctores - 1:
-                    Imprimir ListaDoctores[i].obtenerNombre() + ", " + ListaDoctores[i].obtenerEspecialidad() + ", " + ListaDoctores[i].obtenerId()
-                    separador()
-                Fin para
-                Romper caso
+                Si contadorCitas == maxCitas:
+                    Imprimir "Ya no se pueden crear más citas."
+                Sino:
+                    Imprimir "Introduzca la especialidad que necesita:"
+                    Leer especialidadCita
+                    Imprimir "Introduzca el ID de la cita:"
+                    Leer idCita
+                    Imprimir "Introduzca la fecha de la cita en formato DDMMAA:"
+                    Leer fechaCita
+                    Imprimir "Introduzca la hora de la cita en formato 24 horas:"
+                    Leer horaCita
+                    Crear un nuevo objeto Cita con los datos ingresados
+                    Agregar el objeto Cita al arreglo ListaCitas en la posición contadorCitas
+                    Incrementar contadorCitas
+                    Imprimir "La cita con la especialidad " + especialidadCita + " ha sido registrada correctamente."
+
             Caso 4:
-                Imprimir "Lista de todos los pacientes:"
-                Para cada i desde 0 hasta contadorPacientes - 1:
-                    Imprimir ListaPacientes[i].obtenerNombre() + ", " + ListaPacientes[i].obtenerId()
-                    separador()
-                Fin para
-                Romper caso
+                Imprimir "Lista de todos los doctores:"
+                Para cada doctor en ListaDoctores:
+                    Imprimir nombreDoctor, especialidadDoctor e idDoctor
+
             Caso 5:
+                Imprimir "Lista de todos los pacientes:"
+                Para cada paciente en ListaPacientes:
+                    Imprimir nombrePaciente e idPaciente
+
+            Caso 6:
+                Imprimir "Lista de todas las citas:"
+                Para cada cita en ListaCitas:
+                    Imprimir especialidadCita, horaCita, fechaCita e idCita
+
+            Caso 7:
                 Imprimir "Sesión cerrada."
-                Salir del bucle
-            De lo contrario:
+
+            Por defecto:
                 Imprimir "Opción inválida."
-                separador()
 
-
+            Llamar a la función separador
